@@ -1,0 +1,13 @@
+{
+    "name": "Certificator",
+    "dockerFile": "Dockerfile",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils": {
+            "installZsh": true,
+            "installOhMyZsh": true,
+            "installOhMyZshConfig": true,
+            "configureZshAsDefaultShell": true,
+            "upgradePackages": true
+        }
+    }
+}
