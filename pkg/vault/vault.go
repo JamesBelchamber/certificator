@@ -2,7 +2,6 @@ package vault
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/hashicorp/vault/api"
 	"github.com/sirupsen/logrus"
