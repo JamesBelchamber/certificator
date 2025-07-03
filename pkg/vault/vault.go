@@ -21,20 +21,6 @@ func NewVaultClient(roleID, secretID, env, kvPrefix string, logger *logrus.Logge
 	if err != nil {
 		return nil, err
 	}
-
-	if env == "dev" {
-		client.SetToken(os.Getenv("VAULT_DEV_ROOT_TOKEN_ID"))
-	} else {
-		payload := map[string]interface{}{"role": roleID,
-			"jwt": secretID}
-		resp, err := client.Logical().Write("auth/jwt/login", payload)
-		if err != nil {
-			return nil, err
-		}
-
-		client.SetToken(resp.Auth.ClientToken)
-	}
-
 	return &VaultClient{client: client, kvPrefix: kvPrefix, logger: logger}, nil
 }
 
