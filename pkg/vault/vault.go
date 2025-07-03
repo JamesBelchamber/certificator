@@ -15,7 +15,7 @@ type VaultClient struct {
 }
 
 // NewClient initializes vault client with default configuration.
-// It authenticates using approle method (or uses provided token in dev) and returns.
+// It authenticates using jwt method (or uses provided token in dev) and returns.
 func NewVaultClient(roleID, secretID, env, kvPrefix string, logger *logrus.Logger) (*VaultClient, error) {
 	client, err := api.NewClient(api.DefaultConfig())
 	if err != nil {
@@ -25,9 +25,9 @@ func NewVaultClient(roleID, secretID, env, kvPrefix string, logger *logrus.Logge
 	if env == "dev" {
 		client.SetToken(os.Getenv("VAULT_DEV_ROOT_TOKEN_ID"))
 	} else {
-		payload := map[string]interface{}{"role_id": roleID,
-			"secret_id": secretID}
-		resp, err := client.Logical().Write("auth/approle/login", payload)
+		payload := map[string]interface{}{"role": roleID,
+			"jwt": secretID}
+		resp, err := client.Logical().Write("auth/jwt/login", payload)
 		if err != nil {
 			return nil, err
 		}
