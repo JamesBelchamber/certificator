@@ -30,7 +30,6 @@ func TestDefaultConfig(t *testing.T) {
 		},
 		DNSAddress:      "127.0.0.1:53",
 		Environment:     "prod",
-		DomainsFile:     "../../domains.yml",
 		Domains:         []string{"mydomain.com,www.mydomain.com", "example.com"},
 		RenewBeforeDays: 30,
 	}
@@ -74,7 +73,6 @@ func TestConfig(t *testing.T) {
 			},
 			DNSAddress:      dnsAddress,
 			Environment:     environment,
-			DomainsFile:     "../../domains.yml",
 			Domains:         []string{"mydomain.com,www.mydomain.com", "example.com"},
 			RenewBeforeDays: renewBeforeDays,
 		}

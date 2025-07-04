@@ -12,6 +12,8 @@ type Acme struct {
 	DNSPropagationRequirement bool   `envconfig:"ACME_DNS_PROPAGATION_REQUIREMENT" default:"true"`
 	ReregisterAccount         bool   `envconfig:"ACME_REREGISTER_ACCOUNT" default:"false"`
 	ServerURL                 string `envconfig:"ACME_SERVER_URL" default:"https://acme-staging-v02.api.letsencrypt.org/directory"`
+	EABKid                    string `envconfig:"EAB_KID"`
+	EABHmacKey                string `envconfig:"EAB_HMAC_KEY"`
 }
 
 // Vault contains vault related configuration parameters
